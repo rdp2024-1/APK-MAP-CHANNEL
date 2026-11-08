@@ -1,0 +1,16 @@
+CARA MENDAPATKAN APK (tanpa Android Studio)
+1. Buat akun & repository baru (kosong) di github.com.
+2. Upload SEMUA isi folder ini, termasuk folder .github (hasil ekstrak zip).
+3. Buka tab Actions > "Build APK" > tunggu selesai (sekitar 3-5 menit).
+4. Buka hasil run-nya > bagian Artifacts > unduh "MapChannelsTV-apk" > ekstrak > app-debug.apk.
+5. Pindahkan APK ke TV (flashdisk atau aplikasi Send Files to TV), lalu instal.
+Untuk mengganti alamat halaman: edit MainActivity.kt, ubah nilai URL.
+
+KONTROL
+- Mouse USB/Bluetooth: langsung bisa (klik, geser, roda mouse = zoom). Kursor remote otomatis hilang.
+- Remote TV: kursor oranye.
+    Panah            : gerakkan kursor (tahan = makin cepat)
+    OK (tekan)       : klik
+    OK (tahan)+panah : geser peta
+    CH+/CH-, Page Up/Down, FF/Rewind : zoom in/out
+    Menu             : mode zoom (kursor biru, panah atas/bawah = zoom); tekan lagi untuk keluar
