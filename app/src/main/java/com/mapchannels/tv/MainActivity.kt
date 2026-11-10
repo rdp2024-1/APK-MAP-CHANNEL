@@ -75,6 +75,7 @@ class MainActivity : Activity() {
             layoutParams = FrameLayout.LayoutParams(size, size)
             isClickable = false
             isFocusable = false
+            visibility = View.GONE
         }
 
         val root = FrameLayout(this)
@@ -141,7 +142,9 @@ class MainActivity : Activity() {
     }
 
     override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
-        if (ev.isFromSource(InputDevice.SOURCE_MOUSE)) cursor.visibility = View.GONE
+        if (ev.isFromSource(InputDevice.SOURCE_MOUSE) || ev.isFromSource(InputDevice.SOURCE_TOUCHSCREEN)) {
+            cursor.visibility = View.GONE
+        }
         return super.dispatchTouchEvent(ev)
     }
 
@@ -171,8 +174,11 @@ class MainActivity : Activity() {
                 return true
             }
             KeyEvent.KEYCODE_DPAD_CENTER, KeyEvent.KEYCODE_ENTER, KeyEvent.KEYCODE_NUMPAD_ENTER -> {
+                if (cursor.visibility != View.VISIBLE && !dragging) {
+                    if (down) showCursor()
+                    return true
+                }
                 if (down && e.repeatCount == 0) {
-                    showCursor()
                     sendTouch(MotionEvent.ACTION_DOWN)
                     dragging = true
                 } else if (!down && dragging) {
